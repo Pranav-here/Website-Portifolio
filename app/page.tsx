@@ -15,6 +15,7 @@ import {
   MessageSquare,
   Sparkles,
 } from "lucide-react"
+import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -136,6 +137,7 @@ export default function Home() {
       period: "May 2024 - September 2024",
       location: "Hyderabad, India",
       description: "Internship at Tech Mahindra focusing on software development.",
+      certificateLink: "Tech-Mahindra-Certificate.png",
     },
     {
       title: "Machine Learning Researcher",
@@ -323,20 +325,23 @@ export default function Home() {
             >
               <h3 className="text-2xl font-bold">Artificial Intelligence Student & Developer</h3>
               <p className="text-lg text-muted-foreground">
-                I'm an Artificial Intelligence student at Illinois Institute of Technology with an anticipated
+                I'm an Artificial Intelligence undergradate student at Illinois Institute of Technology with an anticipated
                 graduation in May 2026. My passion lies in creating intelligent systems that solve real-world problems.
               </p>
               <p className="text-lg text-muted-foreground">
-                With a strong foundation in machine learning, data analysis, and software development, I enjoy tackling
+                With a strong foundation in machine learning, natural language processing, data analysis, and software development, I enjoy tackling
                 complex challenges and turning data into actionable insights.
               </p>
 
               <div className="flex flex-wrap gap-2">
                 <Badge variant="outline" className="px-3 py-1">
-                  Chicago, IL
+                  pranav010105@gmail.com
                 </Badge>
                 <Badge variant="outline" className="px-3 py-1">
                   +1 (312) 450-9214
+                </Badge>
+                <Badge variant="outline" className="px-3 py-1">
+                  Chicago, IL
                 </Badge>
               </div>
 
@@ -447,14 +452,14 @@ export default function Home() {
                     <div className="flex flex-wrap gap-2">
                       {[
                         "SQL",
-                        "Data Mining",
-                        "Data Visualization",
                         "NumPy",
+                        "Pandas",
                         "Seaborn",
                         "Matplotlib",
                         "Streamlit",
+                        "Data Mining",
+                        "Data Visualization",
                         "Statistical Analysis",
-                        "Pandas",
                       ].map((skill) => (
                         <Badge key={skill} variant="secondary">
                           {skill}
@@ -473,7 +478,7 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-semibold mb-4">Programming & Tools</h3>
                     <div className="flex flex-wrap gap-2">
-                      {["Java", "HTML", "CSS", "R", "PyTorch", "Mathematica", "Figma", "MS Office"].map(
+                      {["HTML", "CSS","Java", "R", "PyTorch", "Mathematica", "Figma", "MS Office"].map(
                         (skill) => (
                           <Badge key={skill} variant="secondary">
                             {skill}
@@ -492,11 +497,26 @@ export default function Home() {
                       <MessageSquare className="h-6 w-6 text-primary" />
                     </div>
                     <h3 className="text-xl font-semibold mb-4">Languages</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <Badge className="px-3 py-1">English</Badge>
-                      <Badge className="px-3 py-1">Telugu</Badge>
-                      <Badge className="px-3 py-1">Hindi</Badge>
-                    </div>
+                    <div className="space-y-4">
+      {[
+        { language: "English", level: 98 },
+        { language: "Telugu", level: 96 },
+        { language: "Hindi", level: 88 },
+      ].map((lang, index) => (
+        <div key={index} className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm font-medium">{lang.language}</span>
+          </div>
+          <Slider 
+            defaultValue={[lang.level]}
+            max={100}
+            step={1}
+            className="[&_[role=slider]]:hidden [&_[role=slider-track]]:h-2"
+            disabled
+          />
+        </div>
+      ))}
+    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -512,11 +532,11 @@ export default function Home() {
           >
             <h3 className="text-xl font-semibold mb-4">Certifications</h3>
             <div className="flex flex-wrap justify-center gap-3">
-              <Badge className="px-4 py-2 text-base">P33 Strong Start</Badge>
-              <Badge className="px-4 py-2 text-base">What Is Generative AI?</Badge>
-              <Badge className="px-4 py-2 text-base">Metamorphosis Student Launchpad</Badge>
-              <Badge className="px-4 py-2 text-base">Pandas by Kaggle</Badge>
-              <Badge className="px-4 py-2 text-base">Microsoft AI Skills Challenge</Badge>
+              <Badge className="px-4 py-2 text-base">
+                <a href="https://onedrive.live.com/edit?id=3CDA61235B8E102A!3608&resid=3CDA61235B8E102A!3608&ithint=file%2cpptx&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvcyFBaW9RamxzallkbzhuQmh4SnlnLTZMeW5zay1oP2U9UTRieHZI&migratedtospo=true&wdo=2&cid=3cda61235b8e102a" target="_blank" rel="noopener noreferrer">
+                  Microsoft AI Skills Challenge
+                </a>
+              </Badge>
 
               {/* Link for "Pandas by Kaggle" */}
               <Badge className="px-4 py-2 text-base">
@@ -524,6 +544,17 @@ export default function Home() {
                   Pandas by Kaggle
                 </a>
               </Badge>
+              <Badge className="px-4 py-2 text-base">
+              <a href="https://www.linkedin.com/learning/certificates/c5acc82441331a06723f87a44786f85fa15788cc0f4541fa3cf9d59aa9f4d53d" target="_blank" rel="noopener noreferrer">
+                  What is Generative AI?
+              </a>
+              </Badge>
+              <Badge className="px-4 py-2 text-base">
+                <a href="https://www.p33chicago.com/strongstartcertificate" target="_blank" rel="noopener noreferrer">
+                  P33 Strong Start
+                </a>
+                </Badge>
+              <Badge className="px-4 py-2 text-base">Metamorphosis Student Launchpad</Badge>
             </div>
           </motion.div>
         </div>
@@ -569,6 +600,9 @@ export default function Home() {
                     <Badge variant="outline" className="px-3 py-1">
                       GPA 3.84
                     </Badge>
+                    <Badge variant="outline" className="px-3 py-1">
+                      Chicago, IL
+                    </Badge>
                   </div>
 
                   <div className="bg-background/50 rounded-lg p-4">
@@ -586,7 +620,7 @@ export default function Home() {
               <CardContent className="p-8">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold">Intermediate (High School)</h3>
+                    <h3 className="text-2xl font-bold">Senior High School</h3>
                     <p className="text-lg font-medium mt-1">Narayana Junior College</p>
                   </div>
                   <Badge className="mt-2 md:mt-0 px-3 py-1">May 2020 - May 2022</Badge>
@@ -596,6 +630,9 @@ export default function Home() {
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="px-3 py-1">
                       Mathematics, Physics and Chemistry
+                    </Badge>
+                    <Badge variant="outline" className="px-3 py-1">
+                      Hyderabad, India
                     </Badge>
                   </div>
                   <div className="bg-background/50 rounded-lg p-4">
@@ -617,8 +654,14 @@ export default function Home() {
                   </div>
                   <Badge className="mt-2 md:mt-0 px-3 py-1">2010 - 2020</Badge>
                 </div>
+                
 
                 <div className="space-y-4">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="px-3 py-1">
+                      Hyderabad, India
+                    </Badge>
+                  </div>
                   <div className="bg-background/50 rounded-lg p-4">
                     <p className="font-medium">Achievements:</p>
                     <ul className="list-disc list-inside mt-2 space-y-1 text-muted-foreground">
